@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load blog_tags %}
 {% block title %}Log-in{% endblock title %}
 
 {% block content %}
@@ -7,14 +8,20 @@
    {% if form.erros %}
       <p>Your username and password didn't match. Please try again.</p>
    {% else %}
-      <p>Please, use the following from to login.</p>
+      <p>If you don't have an account <a href="{% url 'register' %}">register here</a> </p>
    {% endif %}
 
    <div class="login-form">
       <form method="post" action="{% url 'login' %}">
-         {{ form.as_p }}
+      {% for visible_field in form.visible_fields %}
+         <div class="form-group">
+            {{ visible_field.label_tag }} <br/>
+            {{ visible_field|addclass:"input-test" }}
+            {{ visible_field.errors }} 
+         </div>
+      {% endfor %}
          {% csrf_token %}
-      
+   
          <input type="hidden" name="next" value="{{ next }}" />
          <p>
             <input type="submit" value="Log-in">
