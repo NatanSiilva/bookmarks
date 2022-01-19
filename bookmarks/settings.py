@@ -87,6 +87,7 @@ DATABASES = {
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
 ]
 
 
@@ -146,3 +147,8 @@ EMAIL_HOST_USER = "natan.progjs@gmail.com"
 EMAIL_HOST_PASSWORD = "Coruripe151323"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = '334890628496631'
+SOCIAL_AUTH_FACEBOOK_SECRET = '48f09593f6549805b60372c4c8a89ef0'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
