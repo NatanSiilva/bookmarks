@@ -1,9 +1,11 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+
+
 from .forms import LoginForm, UserRegistrationForm, ProfileEditForm, UserEditForm
 from .models import Profile
 
@@ -60,7 +62,6 @@ def register(request):
 
 @login_required
 def edit(request):
-
     if request.user.profile:
         if request.method == 'POST':
             user_form = UserEditForm(instance=request.user, data=request.POST)

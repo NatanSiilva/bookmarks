@@ -20,6 +20,7 @@
     block_request == false) {
      block_request = true;
       page += 1;
+
       $.get('?page=' + page, function(data) {
        if(data == '') {
           empty_page = true;
