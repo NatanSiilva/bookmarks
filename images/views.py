@@ -38,7 +38,7 @@ def image_detail(request, id, slug):
     return render(request, 'images/image/detail.html', {'section': 'images', 'image': image})
 
 
-@ajax_required
+# @ajax_required
 @login_required
 @require_POST
 def image_like(request):
